@@ -1,0 +1,24 @@
+.card-hover-2 {
+    opacity: 0;
+    transition: 1s;
+    overflow: hidden;
+}
+.card-hover-1 {
+    transition: 0.5s;
+}
+.card-hover-2 div {
+    overflow: hidden;
+}
+.card-hover-2 img {
+    transition: 0.5s;
+}
+
+.cardBox:hover .card-hover-1 {
+    opacity: 0;
+}
+.cardBox:hover .card-hover-2 {
+    opacity: 1;
+}
+.cardBox:hover .card-hover-2 img {
+    transform: scale(1.1);
+}
