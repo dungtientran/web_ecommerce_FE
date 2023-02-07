@@ -1,46 +1,11 @@
-import { Button, Divider, Input, Upload } from 'antd'
+import { Button } from 'antd'
 import axios from 'axios'
-import React, { useState } from 'react'
-import { getBase64 } from '../untils/convertBase64'
+import React from 'react'
+
 
 const CreateHome = () => {
 
-    const [banner, setBanner] = useState()
-    // hslider1
-    const [name1, setName1] = useState()
-    const [name2, setName2] = useState()
-    const [name3, setName3] = useState()
-    const [name4, setName4] = useState()
-    const [image1, setImage1] = useState()
-    const [image2, setImage2] = useState()
-    const [image3, setImage3] = useState()
-    const [image4, setImage4] = useState()
-
-    //hslider2
-    const [imageviewh2, setImageViewh2] = useState()
-    const [nameh2, setNameh2] = useState()
-    const [sizeh2, setSizeh2] = useState()
-    const [amounth2, setAmounth2] = useState()
-    const [titleh2, setTitleh2] = useState()
-    const [imageh2, setImageh2] = useState()
-
-    //hslider3 
-
-    const [nameh31, setNameh31] = useState()
-    const [nameh32, setNameh32] = useState()
-    const [titleh31, setTitleh31] = useState()
-    const [titleh32, setTitleh32] = useState()
-    const [srch31, setSrc31] = useState()
-    const [srch32, setSrch32] = useState()
-
-    //hslider
-
-    const [hslider4, setHsilder4] = useState()
-
-    //hslider 5
-
-    const [hslider5, setHslider5] = useState()
-
+  
     const data = {
         banner: [
             'https://res.cloudinary.com/dbkgkyh4h/image/upload/v1675007528/oexigrptll5ymdjr4fyz.png',
@@ -94,22 +59,22 @@ const CreateHome = () => {
                 {
                     id: '63e07cdd3f58a207a55e9140',
                     name: 'Khuyên tai',
-                    image: 'https://res.cloudinary.com/dbkgkyh4h/image/upload/v1675015031/l4wpiffnev2dozbafiiu.png'
+                    image: 'https://res.cloudinary.com/dbkgkyh4h/image/upload/v1675763988/nijvgybtmjmhg4bukio3.png'
                 },
                 {
                     id: '63e07d1d3f58a207a55e9144',
                     name: 'Nhẫn bạc s925',
-                    image: 'https://res.cloudinary.com/dbkgkyh4h/image/upload/v1675015033/uatpteg6yymqwevl8tkk.png'
+                    image: 'https://res.cloudinary.com/dbkgkyh4h/image/upload/v1675763990/clc25ww6bngcxnc5kq51.png'
                 },
                 {
                     id: '63e07dad3f58a207a55e914b',
                     name: 'Dây chuyền bạc s925',
-                    image: 'https://res.cloudinary.com/dbkgkyh4h/image/upload/v1675015033/uatpteg6yymqwevl8tkk.png'
+                    image: 'https://res.cloudinary.com/dbkgkyh4h/image/upload/v1675763986/csl612qzoxceh02ejmpg.png'
                 },
                 {
                     id: '63e07e3f3f58a207a55e914f',
                     name: 'Vòng tay bạc s925',
-                    image: 'https://res.cloudinary.com/dbkgkyh4h/image/upload/v1675015035/guuxb9cjyghjknmrwidj.png'
+                    image: 'https://res.cloudinary.com/dbkgkyh4h/image/upload/v1675763992/kmjzbhcxmkmqa0ciqt7l.png'
                 },
             ]
         },
@@ -120,6 +85,7 @@ const CreateHome = () => {
                 id: '63e07d1d3f58a207a55e9144',
                 name: 'Nhẫn bạc nam, nữ QUYMAO Ring Helios Original S925',
                 price: '1150000',
+                amount: 11,
                 size: 'Size 6',
                 title: 'Helios chính thức cho ra mắt combo mặt dây chuyền và nhẫn Quý Mão, được lấy cảm hứng từ linh vật của năm 2023. Kết hợp với chất liệu bạc S925 với sự mạnh mẽ, cứng rắn.Tất cả điều đó tạo nên một bức tranh tổng thể, sinh động và rõ ràng, giữ trọn vẹn được tinh thần truyền thống Việt Nam nhưng không mang cảm giác lạc hậu, cũ kỹ.',
                 image: [
@@ -201,108 +167,7 @@ const CreateHome = () => {
     }
 
 
-    const handleOnchangeBanner = async ({ fileList }) => {
-        const list = []
-        fileList.forEach(async item => {
-            const file = item
-            if (!file.url && !file.preview) {
-                file.preview = await getBase64(file.originFileObj)
-                list.push(file.preview)
-            }
-            setBanner(list)
-        })
-    }
-    const handleOnchangeImageviewh2 = async ({ fileList }) => {
-        const list = []
-        fileList.forEach(async item => {
-            const file = item
-            if (!file.url && !file.preview) {
-                file.preview = await getBase64(file.originFileObj)
-                list.push(file.preview)
-            }
-            setImageViewh2(list)
-        })
-    }
-    const handleOnchangeImageh2 = async ({ fileList }) => {
-        const list = []
-        fileList.forEach(async item => {
-            const file = item
-            if (!file.url && !file.preview) {
-                file.preview = await getBase64(file.originFileObj)
-                list.push(file.preview)
-            }
-            setImageh2(list)
-        })
-    }
-
-
-    const handleOnchangeImage1 = async ({ fileList }) => {
-        const list = []
-        fileList.forEach(async item => {
-            const file = item
-            if (!file.url && !file.preview) {
-                file.preview = await getBase64(file.originFileObj)
-                list.push(file.preview)
-            }
-            setImage1(list)
-        })
-    }
-    const handleOnchangeImage2 = async ({ fileList }) => {
-        const list = []
-        fileList.forEach(async item => {
-            const file = item
-            if (!file.url && !file.preview) {
-                file.preview = await getBase64(file.originFileObj)
-                list.push(file.preview)
-            }
-            setImage2(list)
-        })
-    }
-    const handleOnchangeImage3 = async ({ fileList }) => {
-        const list = []
-        fileList.forEach(async item => {
-            const file = item
-            if (!file.url && !file.preview) {
-                file.preview = await getBase64(file.originFileObj)
-                list.push(file.preview)
-            }
-            setImage3(list)
-        })
-    }
-    const handleOnchangeImage4 = async ({ fileList }) => {
-        const list = []
-        fileList.forEach(async item => {
-            const file = item
-            if (!file.url && !file.preview) {
-                file.preview = await getBase64(file.originFileObj)
-                list.push(file.preview)
-            }
-            setImage4(list)
-        })
-    }
-    const handleOnchangeHslider4 = async ({ fileList }) => {
-        const list = []
-        fileList.forEach(async item => {
-            const file = item
-            if (!file.url && !file.preview) {
-                file.preview = await getBase64(file.originFileObj)
-                list.push(file.preview)
-            }
-            setHsilder4(list)
-        })
-    }
-    const handleOnchangeHslider5 = async ({ fileList }) => {
-        const list = []
-        fileList.forEach(async item => {
-            const file = item
-            if (!file.url && !file.preview) {
-                file.preview = await getBase64(file.originFileObj)
-                list.push(file.preview)
-            }
-            setHslider5(list)
-        })
-    }
-
+ 
 
 
     const handleCreate = async () => {
@@ -313,100 +178,11 @@ const CreateHome = () => {
     return (
 
 
-        <div>
-            <div>
-                <p>banner</p>
-                {/* <Upload multiple onChange={handleOnchangeBanner}>Chọn banner</Upload> */}
-            </div>
-            <Divider />
-            <div>
-                <p className='text-xl'>hslider1</p>
-
-                <p>name1</p>
-                <Input onChange={(e) => setName1(e.target.value)} />
-                <p>image1</p>
-                <Upload multiple onChange={handleOnchangeImage1}><Button >image1</Button></Upload>
-
-
-                <p>name2</p>
-                <Input onChange={(e) => setName2(e.target.value)} />
-                <p>image2</p>
-                <Upload multiple onChange={handleOnchangeImage2}><Button >image2</Button></Upload>
-
-
-                <p>name3</p>
-                <Input onChange={(e) => setName3(e.target.value)} />
-                <p>image3</p>
-                <Upload multiple onChange={handleOnchangeImage3}><Button >image3</Button></Upload>
-
-
-                <p>name4</p>
-                <Input onChange={(e) => setName4(e.target.value)} />
-                <p>image4</p>
-                <Upload multiple onChange={handleOnchangeImage4}><Button >image4</Button></Upload>
-            </div>
-
-            <Divider />
-
-            <div>
-                <p className='text-xl'>hslider2</p>
-                <Upload onChange={handleOnchangeImageviewh2}><Button>imageview2</Button></Upload>
-                <p>nameh2</p>
-                <Input onChange={(e) => setNameh2(e.target.value)} />
-                <p>sizeh2</p>
-                <Input onChange={(e) => setSizeh2(e.target.value)} />
-                <p>amounth2</p>
-                <Input onChange={(e) => setAmounth2(e.target.value)} />
-                <p>titleh2</p>
-                <Input onChange={(e) => setTitleh2(e.target.value)} />
-                <p>imageh2</p>
-                <Upload multiple onChange={handleOnchangeImageh2}><Button>imageview2</Button></Upload>
-
-
-            </div>
-
-            <Divider />
-            <div>
-                <p className='text-xl'>hslider3</p>
-                <p>nameh31</p>
-                <Input onChange={(e) => setNameh31(e.target.value)} />
-                <p>titleh31</p>
-                <Input onChange={(e) => setTitleh31(e.target.value)} />
-                <p>srch31</p>
-                <Input onChange={(e) => setSrc31(e.target.value)} />
-
-                <p>nameh32</p>
-                <Input onChange={(e) => setNameh32(e.target.value)} />
-                <p>titleh32</p>
-                <Input onChange={(e) => setTitleh32(e.target.value)} />
-                <p>srch32</p>
-                <Input onChange={(e) => setSrch32(e.target.value)} />
-
-
-            </div>
-
-            <Divider />
-
-            <div>
-                <p className='text-xl'>Hslider4</p>
-                <Upload multiple onChange={handleOnchangeHslider4}><Button>CLick</Button></Upload>
-            </div>
-
-
-            <Divider />
-
-            <div>
-                <p className='text-xl'>Hslider5</p>
-                <Upload multiple onChange={handleOnchangeHslider5}><Button>CLick</Button></Upload>
-            </div>
-
-
-
-
+    
             <div>
                 <Button onClick={handleCreate}>CreateHome</Button>
             </div>
-        </div>
+       
     )
 }
 

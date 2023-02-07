@@ -1,40 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import Skeleton from 'react-loading-skeleton';
-import { apiGetAllProducts } from '../../api/products';
-
+import React from 'react';
 import './ListProductItem.css'
 
 const ListProductItem = ({infor, productUi}) => {
-
-    // const [page, setPage] = useState(0)
-   
-    // const fetchProduct = async () => {
-    //     const res = await apiGetAllProducts(page)
-    //     console.log(res.data.total)
-    //     if (res.data.err === 0) {
-    //         productUi(res.data.data)
-    //     }
-    // }
-
-    // useEffect(() => {
-    //     fetchProduct()
-    // },[page])
-
-    // const handleScroll = async () => {
-    //     try {
-    //         if (window.innerHeight + document.documentElement.scrollHeight + 1 >= document.documentElement.scrollTop) {
-    //             setPage((prev) => prev + 1)
-    //         }
-    //     } catch (e) {
-    //         console.log(e)
-    //     }
-    // }
-
-    // useEffect(() => {
-    //     window.addEventListener('scroll', handleScroll)
-    //     return () => window.removeEventListener('scroll', handleScroll)
-    // }, [])
-
 
     return (
         <div className='text-white relative cardBox cursor-pointer'>

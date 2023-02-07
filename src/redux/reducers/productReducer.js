@@ -5,6 +5,7 @@ const initState = {
     collectionProduct: [],
     categoryProduct: [],
     detailsProduct: [],
+    isGetDetails: false,
     listImgDetails: [],
     listCart: [],
     searchText: ''
@@ -30,6 +31,7 @@ const productReducer = (state = initState, action) => {
             return {
                 ...state,
                 detailsProduct: action.detailsProduct,
+                isGetDetails: true
             }
         }
         case (actionsTyoe.GET_CATEGORY_SUCCSESS):

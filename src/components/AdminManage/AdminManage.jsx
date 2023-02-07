@@ -1,5 +1,5 @@
 import { DeleteOutlined } from '@ant-design/icons';
-import { Button, Divider, Form, Input, Modal } from 'antd';
+import { Button, Divider, Form, Input, Modal, Spin } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { apiCreateAdmin, apiDeleteAdmin } from '../../api/adminLogin';
 import TableComponent from '../TableComponent/TableComponent';
@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 const AdminManage = () => {
 
     const [isModelOpenDelete, setIsModelOpenDelete] = useState(false);
+    const [isLoading, setIsLoading] = useState(false)
     const dispatch = useDispatch()
     const { allAdmin } = useSelector(state => state.admin)
     const renderAction = () => {
@@ -22,10 +23,10 @@ const AdminManage = () => {
     }
 
     useEffect(() => {
-        dispatch(getAllAdminAction())
-    }, [dispatch])
 
-    console.log(allAdmin)
+        dispatch(getAllAdminAction())
+        
+    }, [dispatch])
 
     const columns = [
         {
@@ -44,7 +45,7 @@ const AdminManage = () => {
         },
     ]
 
-   
+
 
     const dataTable = allAdmin?.length && allAdmin?.map((item, index) => {
         return {
@@ -60,37 +61,44 @@ const AdminManage = () => {
     const handleCancel = () => {
         setIsModalOpen(false)
     }
+
+    //create admin
+
     const handleCreateAdmin = async (e) => {
-          const res =  await apiCreateAdmin(e)
-          console.log(res)
-          if(res.data.err === 0) {
+        setIsLoading(true)
+        const res = await apiCreateAdmin(e)
+        if (res.data.err === 0) {
             setIsModalOpen(false)
             dispatch(getAllAdminAction())
             toast.success(res.data.msg)
-          }else{
+            setIsLoading(false)
+        } else {
             toast.success(res.data.msg)
-          }
+            setIsLoading(false)
+        }
     };
 
+    //delete admin
 
     const [rowSelected, setRowSelected] = useState()
 
     const hadleDelete = async () => {
-        const data = { id: 3 }
-        await apiDeleteAdmin(data)
+        setIsLoading(true)
+        const res = await apiDeleteAdmin(rowSelected)
+        
+        if (res.data.err === 0) {
+            dispatch(getAllAdminAction())
+            toast.success(res.data.msg)
+            setIsModelOpenDelete(false)
+            setIsLoading(false)
+        } else {
+            toast.success(res.data.msg)
+            setIsLoading(false)
+        }
     }
 
     const handleCancelDelete = () => setIsModelOpenDelete(false);
 
-    const handleDeleteProduct = async () => {
-        //     const res = await apiDeleteProduct(rowSelected)
-        //     if (res?.data.err === 0) {
-        //       dispatch(getAllProduct())
-        //       setIsModelOpenDelete(false)
-        //       toast.success(res.data.msg)
-        //     }
-
-    }
 
 
     return (
@@ -106,7 +114,7 @@ const AdminManage = () => {
             <Divider />
             <TableComponent columns={columns} data={dataTable} onRow={(record, rowIndex) => {
                 return {
-                    onClick: (event) => { setRowSelected(record.id) },
+                    onClick: (event) => { setRowSelected(record._id) },
                 };
             }} />
             <Modal title="Thêm Admin" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
@@ -156,15 +164,19 @@ const AdminManage = () => {
                     >
                         <Input className='text-black' />
                     </Form.Item>
-                    <Button type="primary" htmlType="submit" className='text-black bg-red-700'>
-                        Submit
-                    </Button>
+                    <Spin spinning={isLoading}>
+                        <Button type="primary" htmlType="submit" className='text-black bg-red-700'>
+                            Submit
+                        </Button>
+                    </Spin>
                 </Form>
             </Modal>
-            <Modal title='Xóa Sản Phẩm' open={isModelOpenDelete} onCancel={handleCancelDelete} onOk={handleDeleteProduct}>
-                <div>
-                    Bạn có chắc chắn xóa sản phẩm này?
-                </div>
+            <Modal title='Xóa Admin' open={isModelOpenDelete} onCancel={handleCancelDelete} onOk={hadleDelete}>
+                <Spin spinning={isLoading}>
+                    <div>
+                        Bạn có chắc chắn Admin này?
+                    </div>
+                </Spin>
             </Modal>
         </div>
     )

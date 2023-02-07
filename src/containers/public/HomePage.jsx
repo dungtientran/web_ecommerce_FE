@@ -1,8 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { FeaturedProducts, HotProducts, ShopByInstagram } from '../../components';
 import CarouselComponent from '../../components/CarouselComponent/CarouselComponent';
+import FeaturedProducts from '../../components/FeaturedProducts/FeaturedProducts';
+import HotProducts from '../../components/HotProducts/HotProducts';
 import OverView from '../../components/OverView/OverView';
+import ShopByInstagram from '../../components/ShopByInstagram/ShopByInstagram';
 
 
 const HomePage = () => {
@@ -11,9 +13,6 @@ const HomePage = () => {
  
   return (
     <div>
-    
-
-
       <CarouselComponent />
 
       <OverView

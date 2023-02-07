@@ -6,4 +6,5 @@ export const path = {
     LISPRODUCT: '/collection/:id',
     DETAILSPRODUCT: '/product/:id',
     CART: '/cart',
+    CHECKOUT: '/checkout'
 }

@@ -1,6 +1,5 @@
 import { Spin } from 'antd'
 import React from 'react'
-import Skeleton from 'react-loading-skeleton'
 
 const Loading = ({ children, isLoading, delay = 0 }) => {
   return (

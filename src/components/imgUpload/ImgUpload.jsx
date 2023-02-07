@@ -1,5 +1,4 @@
 import { PlusOutlined } from '@ant-design/icons';
-import { Modal, Upload } from 'antd'
 import React, { useState } from 'react'
 import { WrapperUploadFile } from '../ProductManage/style';
 

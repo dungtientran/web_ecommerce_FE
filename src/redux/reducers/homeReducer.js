@@ -3,6 +3,7 @@ import { actionsTyoe } from "../actions/actionsType";
 
 const initState = {
     homeData: null,
+    isGetHomeData:false,
     listColection: [],
     banner: [],
     productportfolio: [],
@@ -21,6 +22,7 @@ const homeReducer = (state = initState, action) => {
         return {
             ...state,
             homeData: action.homeData,
+            isGetHomeData: true,
             listColection: action.homeData.collectionName,
             categoryProduct: action.homeData.category,
             banner: action.homeData.banner,

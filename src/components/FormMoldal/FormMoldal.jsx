@@ -4,7 +4,6 @@ import TextArea from 'antd/es/input/TextArea';
 import axios from '../../axios';
 import React, { useState } from 'react'
 import { apiUpLoadImages } from '../../api/products';
-import { getBase64 } from '../../untils/convertBase64'
 import { toast } from 'react-toastify';
 import { getAllProduct } from '../../redux/actions/productAction';
 import { useDispatch } from 'react-redux';
@@ -15,17 +14,18 @@ const FormMoldal = ({ IsFormModalOpen }) => {
     const [imgPreview, setImgPreview] = useState([]);
 
     const dispatch = useDispatch()
-    const handleOnchangeImage = async ({ fileList }) => {
-        const list = []
-        fileList.forEach(async item => {
-            const file = item
-            if (!file.url && !file.preview) {
-                file.preview = await getBase64(file.originFileObj)
-                list.push(file.preview)
-            }
-            setImgPreview(list)
-        })
-    }
+    
+    // const handleOnchangeImage = async ({ fileList }) => {
+    //     const list = []
+    //     fileList.forEach(async item => {
+    //         const file = item
+    //         if (!file.url && !file.preview) {
+    //             file.preview = await getBase64(file.originFileObj)
+    //             list.push(file.preview)
+    //         }
+    //         setImgPreview(list)
+    //     })
+    // }
 
     const handeleUploadImage = async(e) => { 
         let images = []

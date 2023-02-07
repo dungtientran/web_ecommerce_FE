@@ -3,16 +3,13 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { BsSearch } from 'react-icons/bs';
 import { SlHandbag } from 'react-icons/sl';
 import { useDispatch, useSelector } from 'react-redux';
-import { Categoty } from '..';
 import { MenuOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
-import Notify from '../Notify/Notify';
 import { isOpenAction } from '../../redux/actions/isOpenAction';
 
 
 const Header = () => {
     const navigate = useNavigate();
-    const [isOpenSubNav, setIsOpenSubNav] = useState(false)
     const dispatch = useDispatch()
     const { listColection } = useSelector(state => state.homeData)
     const [fix, setFix] = useState(false);
@@ -27,15 +24,6 @@ const Header = () => {
     }
     window.addEventListener('scroll', setFixed);
 
-   
-    const handleOnMout = (e) => {
-        if (e.target.innerText === 'JEWELRY') setIsOpenSubNav(true)
-
-    }
-
-    const handelonMouseOut = (e) => {
-        if (e.target.innerText === 'JEWELRY') setIsOpenSubNav(false)
-    }
 
 
     return (
@@ -54,8 +42,7 @@ const Header = () => {
                     <div className='flex'>
                         {listColection?.map((item, index) => (
                             <div key={index} className='px-[18px] py-[20px]'
-                                onMouseOver={handleOnMout}
-                                onMouseOut={handelonMouseOut}>
+                                >
                                 <span
                                     onClick={() => navigate(`/collection/${item?.key.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").split(' ').join('-')}`)}
                                     className='ttd-navbar-item'
@@ -74,19 +61,6 @@ const Header = () => {
                     </div>
                     <Button type='primary' size='sm' className='ml-2 text-white' danger onClick={() => navigate('/login')} >LOGIN</Button>
                 </div>
-            </div>
-            <div
-                onMouseOver={() => setIsOpenSubNav(true)}
-                onMouseOut={() => setIsOpenSubNav(false)}
-                className='relative top-[-20px] '
-            >
-                <div className={`relative  ${isOpenSubNav ? 'translate-y-[0%] ease-in-out duration-5000' : 'hidden'}`}>
-                    <Categoty />
-                </div>
-
-            </div>
-            <div className='absolute left-[100%]'>
-                <Notify />
             </div>
         </div>
     )
