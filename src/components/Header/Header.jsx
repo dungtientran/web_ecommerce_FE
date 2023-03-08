@@ -31,6 +31,9 @@ const Header = () => {
             <div className='h-[40px] bg-[#000] hover:bg-gray-800  text-white flex justify-center items-center uppercase text-[13px] cursor-pointer'>
                 Trần Tiến Dũng - 08/03/2023
             </div>
+            <div>
+                <p>AKAKAKAKAKA</p>
+            </div>
             <div className='flex flex-row bg-none py-[20px] justify-around lg:justify-between text-[16px] relative'>
                 <div className='lg:hidden lg:w-1/6 p-3 cursor-pointer'>
                     <MenuOutlined />
