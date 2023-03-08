@@ -32,7 +32,7 @@ const Header = () => {
                 Trần Tiến Dũng - 08/03/2023
             </div>
             <div>
-                <p>AKAKAKAKAKA</p>
+                <p >AKAKAKAKAKA - K build</p>
             </div>
             <div className='flex flex-row bg-none py-[20px] justify-around lg:justify-between text-[16px] relative'>
                 <div className='lg:hidden lg:w-1/6 p-3 cursor-pointer'>
